@@ -31,13 +31,15 @@ exports.placeorder = asyncErrorHandler(async (_request,_response,next)=>{
 exports.deleteorder = asyncErrorHandler(async (_request,_response,next)=>{
     let body = _request.body;
     let productname = body.productname;
+    let _id = productname.toLowerCase()+"retail";
     let datas = await productModal.findOne({"_id" : productname+"retail"});
     let intialstock = datas.intialstock;
     let availablestock = intialstock;
     let orderedstock = 0;
-    await productModal.findByIdAndUpdate(_id,{"orderedstock" : orderedstock,"availablestock" : availablestock},{new: true})
+    let data = await productModal.findByIdAndUpdate(_id,{"orderedstock" : orderedstock,"availablestock" : availablestock},{new: true})
     let serviceResponse = {
-        "message" : `${productname.toUpperCase()} ORDER REMOVED`
+        "message" : `${productname.toUpperCase()} ORDER CANCELED`,
+        "stockdetails" : data
   };
 
     _response.status(codes.success)

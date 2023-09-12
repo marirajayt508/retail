@@ -72,7 +72,7 @@ exports.deleteproduct = asyncErrorHandler(async (_request,_response,next)=>{
 exports.updateproduct = asyncErrorHandler(async (_request,_response,next)=>{
     let name = _request.body.productname;
     let _id = name+"retail";
-    let intialstock = _request.body.intialstock;
+    let intialstock = _request.body.quantity;
     if(!(name && intialstock))
     {
         next(err)
