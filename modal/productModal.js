@@ -4,13 +4,14 @@ const config = require('config');
 //Verify Connection
 const connection = mongoose.connection;
 
-connection.on("connected",()=>{
+if(process.NODE_ENV == "dev")
+{connection.on("connected",()=>{
 console.log("PRODUCT MODAL CONNECTED")
   });
 
 connection.on("error",()=>{
 console.log("PRODUCT MODAL CONNECTION ERROR")
-});
+});}
 
 const productSchema =  new mongoose.Schema({
 "productname": {

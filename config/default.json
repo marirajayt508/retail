@@ -8,7 +8,8 @@
       "uri" : "mongodb+srv://marirajayt508:retail@cluster0.5noybb5.mongodb.net/?retryWrites=true&w=majority",
       "collections" : {
         "productDetails" : "myProducts"
-      }
+      },
+      "NODE_ENV" : "test"
     }
    }
 }
